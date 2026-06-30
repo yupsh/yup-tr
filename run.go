@@ -74,7 +74,11 @@ func newApp(version string, stdin io.Reader, stdout io.Writer) *cli.Command {
 func flags() []cli.Flag {
 	return []cli.Flag{
 		&cli.BoolFlag{Name: flagDelete, Aliases: []string{"d"}, Usage: "delete characters in SET1, do not translate"},
-		&cli.BoolFlag{Name: flagSqueeze, Aliases: []string{"s"}, Usage: "replace each sequence of a repeated character with a single occurrence"},
+		&cli.BoolFlag{
+			Name:    flagSqueeze,
+			Aliases: []string{"s"},
+			Usage:   "replace each sequence of a repeated character with a single occurrence",
+		},
 		&cli.BoolFlag{Name: flagComplement, Aliases: []string{"c"}, Usage: "use the complement of SET1"},
 	}
 }

@@ -43,13 +43,24 @@ var spec = clix.Spec{
 	Synopsis: synopsis,
 	Build:    build,
 	Flags: []urf.Flag{
-		&urf.BoolFlag{Name: flagDelete, Aliases: []string{"d"}, Usage: "delete characters in SET1, do not translate"},
+		&urf.BoolFlag{
+			Name:    flagDelete,
+			Aliases: []string{"d"},
+			Usage:   "delete characters in SET1, do not translate",
+			Sources: urf.EnvVars("YUP_TR_DELETE"),
+		},
 		&urf.BoolFlag{
 			Name:    flagSqueeze,
 			Aliases: []string{"s"},
 			Usage:   "replace each sequence of a repeated character with a single occurrence",
+			Sources: urf.EnvVars("YUP_TR_SQUEEZE_REPEATS"),
 		},
-		&urf.BoolFlag{Name: flagComplement, Aliases: []string{"c"}, Usage: "use the complement of SET1"},
+		&urf.BoolFlag{
+			Name:    flagComplement,
+			Aliases: []string{"c"},
+			Usage:   "use the complement of SET1",
+			Sources: urf.EnvVars("YUP_TR_COMPLEMENT"),
+		},
 	},
 }
 
